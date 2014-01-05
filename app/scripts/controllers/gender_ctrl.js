@@ -1,8 +1,8 @@
 'use strict';
 angular.module("gendertrack")
-.controller("GenderCtrl", function($scope, FIREBASE_URL, $firebase) {
-  $scope.males   = $firebase(new Firebase(FIREBASE_URL + '/males'));
-  $scope.females = $firebase(new Firebase(FIREBASE_URL + '/females'));
+.controller("GenderCtrl", function($scope, FBURL, $firebase) {
+  $scope.males   = $firebase(new Firebase(FBURL + '/males'));
+  $scope.females = $firebase(new Firebase(FBURL + '/females'));
 
   $scope.countMale = function() {
     window.males = $scope.males;

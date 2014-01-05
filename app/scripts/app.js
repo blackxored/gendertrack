@@ -7,9 +7,12 @@ angular.module('gendertrack', [
   'ngRoute',
   'cordova',
   'ionic',
-  'firebase'
+  'firebase',
+  'ui.gravatar',
+  'gendertrack.auth',
+  'gendertrack.waitForAuth'
 ])
-.constant('FIREBASE_URL', 'https://gendertrack.firebaseio.com')
+.constant('FBURL', 'https://gendertrack.firebaseio.com')
 .config(function($compileProvider) {
   // Needed for phonegap routing
   $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|tel):/);
@@ -22,9 +25,18 @@ angular.module('gendertrack', [
   })
   .when('/profile', {
     templateUrl: 'views/current_user_profile.html',
-    controller: 'CurrentProfileCtrl'
+    controller: 'AccountCtrl',
+    authRequired: true
+  })
+  .when('/login', {
+    templateUrl: 'views/login.html',
+    controller: 'LoginCtrl'
   })
   .otherwise({
     redirectTo: '/'
   });
-});
+})
+.run(['loginService', '$rootScope', 'FBURL', function(loginService, $rootScope, FBURL) {
+  $rootScope.auth = loginService.init('/login');
+  $rootScope.FBURL = FBURL;
+}]);
