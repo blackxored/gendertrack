@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- build:css(.tmp) styles/main.css -->
+    <!-- TODO: use sass here and modify vars -->
+    <link rel="stylesheet" href="bower_components/ionic/dist/css/ionic.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+  </head>
+  <body ng-app="gendertrack">
+    <div ng-controller="MainCtrl">
+      <side-menus>
+        <pane nav-router side-menu-content animation="slide-left-right-ios7">
+          <header class="bar bar-header bar-positive">
+            <button class="button button-icon" ng-click="openAppMenu()">
+              <i class="icon ion-navicon"></i>
+            </button>
+            <h1 class="title">GenderTrack</h1>
+          </header>
+          <content has-header="true" has-footer="true">
+            <ng-view></ng-view>
+          </content>
+        </pane>
+
+        <side-menu side="left">
+          <header class="bar bar-header bar-calm">
+            <h1 class="title">Menu</h1>
+          </header>
+          <content has-header="true">
+            <ul class="list">
+              <a href="#/profile" class="item">Profile</a>
+              <a ng-click="goToAbout()" class="item">About</a>
+            </ul>
+          </content>
+        </side-menu>
+      </side-menus>
+    </div>
+
+    <script src="bower_components/angular/angular.js"></script>
+
+    <!-- build:js scripts/modules.js -->
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/angular-cordova/src/angular-cordova.js"></script>
+    <script src="bower_components/ionic/dist/js/ionic.js"></script>
+    <script src="bower_components/ionic/dist/js/ionic-angular.js"></script>
+    <script src="bower_components/firebase/lib/firebase.js"></script>
+    <script src="bower_components/angularfire/angularfire.js"></script>
+    <!-- endbuild -->
+
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/services/geolocation.js"></script>
+    <script src="scripts/controllers/main_ctrl.js"></script>
+    <script src="scripts/controllers/current_profile_ctrl.js"></script>
+    <script src="scripts/controllers/gender_ctrl.js"></script>
+    <script src="scripts/controllers/geolocation_ctrl.js"></script>
+    <!-- endbuild -->
+</body>
+</html>

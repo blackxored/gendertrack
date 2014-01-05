@@ -1,0 +1,36 @@
+<div class="row row-top padding-vertical">
+  <h2 class="picker-text">I just saw a...</h2>
+</div>
+<div class="row row-center gender-picker" ng-controller="GenderCtrl">
+  <div class="col col-50" ng-click="countFemale()">
+    <div class="card female">
+      <div class="item item-text-wrap">
+        <img src="images/female.png">
+        <p>Female</p>
+        <div class="item item-divider">
+          <span class="female count" ng-bind="females.$getIndex().length" ng-cloak="males"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col col-50" ng-click="countMale()">
+    <div class="card male">
+      <div class="item item-text-wrap">
+        <img src="images/male.png">
+        <p>Male</p>
+        <div class="item item-divider">
+          <span class="male count" ng-bind="males.$getIndex().length" ng-cloak="males"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="padding-vertical">
+</div>
+<footer-bar>
+  <button class="button button-block button-assertive" ng-controller="GenderCtrl" ng-click="resetCounters()">
+    New session
+  </button>
+</footer-bar>

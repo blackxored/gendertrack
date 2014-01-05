@@ -1,0 +1,56 @@
+@font-face {
+  font-family: 'QuicksandLight';
+  src: url('../fonts/quicksand_light-webfont.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/quicksand_light-webfont.woff') format('woff'),
+       url('../fonts/quicksand_light-webfont.ttf')  format('truetype'),
+       url('../fonts/quicksand_light-webfont.svg#svgFontName') format('svg');
+}
+
+
+/* Space out content a bit */
+body {
+  margin: 20px 0;
+}
+
+.gender-picker p {
+  text-align: center;
+  font-family: "QuicksandLight";
+}
+
+.gender-picker img {
+  text-align: center;
+  display: inline-block;
+}
+
+.picker-text {
+  width: 100%;
+  text-align: center;
+}
+
+
+.gender-picker .count {
+  font-size: 2em;
+  text-align: center;
+  font-family: "QuicksandLight";
+  display: inline-block;
+  width: 100%;
+  color: white;
+  text-shadow: 0 0 10px #444;
+}
+
+.gender-picker .male.count {
+//  color: #0084E2;
+}
+
+.gender-picker .female.count {
+//  color: #FF5AC8;
+}
+
+.gender-picker .card.female .item-divider {
+  background: -webkit-linear-gradient(#ee2aaf, #b11616);
+}
+
+.gender-picker .card.male .item-divider {
+  background: -webkit-linear-gradient(#460992, #B09FC5);
+}
+
