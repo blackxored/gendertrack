@@ -1,6 +1,6 @@
 {
   "name": "gender-track",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "dependencies": {
     "angular": "~1.2.0",
     "json3": "~3.2.4",
@@ -22,6 +22,6 @@
     "angular-scenario": "~1.2.0"
   },
   "resolutions": {
-    "angular": "1.2.7"
+    "angular": "1.2.8-build.2070+sha.1bb33cc"
   }
 }
