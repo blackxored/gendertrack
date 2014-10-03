@@ -32,8 +32,8 @@ angular.module('gendertrack.auth', [])
          function($rootScope, $firebaseAuth, firebaseRef, profileCreator, $timeout) {
             var auth = null;
             function assertAuth() {
-                if( auth === null ) { throw new Error('Must call loginService.init() before using its methods'); }
-              }
+              if( auth === null ) { throw new Error('Must call loginService.init() before using its methods'); }
+            }
             return {
               init: function(path) {
                 auth = $firebaseAuth(firebaseRef(), { path: path});
@@ -53,6 +53,7 @@ angular.module('gendertrack.auth', [])
                     password: pass,
                     rememberMe: true
                   }).then(function(user) {
+                      user.profile = { test: "Something"};
                       if( callback ) {
                         //todo-bug https://github.com/firebase/angularFire/issues/199
                         $timeout(function() {
@@ -92,27 +93,31 @@ angular.module('gendertrack.auth', [])
           }])
       .factory('profileCreator', ['firebaseRef', '$timeout', function(firebaseRef, $timeout) {
           return function(id, email, callback) {
-            firebaseRef('users/'+id).set({email: email, name: firstPartOfEmail(email)}, function(err) {
-               //err && console.error(err);
-                if( callback ) {
-                  $timeout(function() {
-                      callback(err);
-                    });
-                }
-              });
+            var firstPartOfEmail = function(email) {
+              return ucfirst(email.substr(0, email.indexOf('@'))||'');
+            };
+            var errorCb = function(err) {
+              if (callback) {
+                $timeout(function() {
+                  callback(err);
+                });
+              }
+            };
 
-            function firstPartOfEmail(email) {
-                return ucfirst(email.substr(0, email.indexOf('@'))||'');
-             }
+            firebaseRef('users/' + id).set({
+              email: email ,
+              name: firstPartOfEmail(email),
+              username: firstPartOfEmail(email).toLowerCase()
+            }, errorCb);
 
             function ucfirst (str) {
-               // credits: http://kevin.vanzonneveld.net
-                str += '';
-                var f = str.charAt(0).toUpperCase();
-                return f + str.substr(1);
+             // credits: http://kevin.vanzonneveld.net
+              str += '';
+              var f = str.charAt(0).toUpperCase();
+              return f + str.substr(1);
             }
-         }
-      }]);
+          };
+        }]);
 
    function errMsg(err) {
       return err? typeof(err) === 'object'? '['+err.code+'] ' + err.toString() : err+'' : null;

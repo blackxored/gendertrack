@@ -10,10 +10,10 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="gendertrack" ng-cloak-auth class="hide">
+  <body ng-app="gendertrack" ng-cloak-auth="" class="hide">
     <div ng-controller="MainCtrl">
       <side-menus>
-        <pane nav-router side-menu-content animation="slide-left-right-ios7">
+        <pane nav-router="" side-menu-content="" animation="slide-left-right-ios7">
           <header class="bar bar-header bar-positive">
             <button class="button button-icon" ng-click="openAppMenu()">
               <i class="icon ion-navicon"></i>
@@ -34,7 +34,7 @@
               <li ng-show="auth.user">
               <a href="#/profile" class="item item-thumbnail-left">
                 <img class="avatar" gravatar-src="auth.user.email" gravatar-size="64">
-                <h2>{{auth.user.email}}</h2>
+                <h2 class="username">{{user.username}}</h2>
                 </a></li>
 
                 <li ng-hide="auth.user">

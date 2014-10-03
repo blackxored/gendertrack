@@ -21,7 +21,8 @@ angular.module('gendertrack', [
   $routeProvider
   .when('/', {
     templateUrl: 'views/main.html',
-    controller: 'MainCtrl'
+    controller: 'MainCtrl',
+    authRequired: true
   })
   .when('/profile', {
     templateUrl: 'views/current_user_profile.html',

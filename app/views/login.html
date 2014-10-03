@@ -5,7 +5,7 @@
   <label class="item item-input">
     <input type="password" ng-model="pass" placeholder="Password">
   </label>
-  <label ng-cloak ng-show="createMode" class="item item-input">
+  <label ng-cloak="" ng-show="createMode" class="item item-input">
     <input type="password" ng-model="confirm" placeholder="Confirm password">
   </label>
   <p ng-show="err" class="error">{{err}}</p>
@@ -14,6 +14,6 @@
 <div class="button-bar">
   <button ng-click="login()" ng-hide="createMode" class="button button-positive">Log in</button>
   <button ng-click="createMode = true" ng-hide="createMode" class="button button-energized">Sign Up</button>
-  <button ng-cloak ng-show="createMode" ng-click="createAccount()" class="button button-positive">Create my account</span>
-  <button ng-cloak ng-show="createMode" ng-click="createMode = false" class="button">Cancel</button>
-</div>
+  <button ng-cloak="" ng-show="createMode" ng-click="createAccount()" class="button button-positive">Create my account
+  <button ng-cloak="" ng-show="createMode" ng-click="createMode = false" class="button">Cancel</button>
+</button></div>

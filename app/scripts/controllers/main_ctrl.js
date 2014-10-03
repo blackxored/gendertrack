@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('gendertrack')
-  .controller('MainCtrl', function($scope, loginService, $location) {
+  .controller('MainCtrl', function($scope, loginService, $location, $firebase, $rootScope) {
     $scope.openAppMenu = function() {
       $scope.sideMenuController.toggleLeft();
     };

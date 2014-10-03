@@ -1,13 +1,14 @@
 'use strict';
 angular.module('gendertrack.auth')
-.controller('LoginCtrl', ['$scope', 'loginService', '$location',
-            function($scope, loginService, $location) {
+.controller('LoginCtrl', ['$scope', 'loginService', '$location', '$firebase', 'FBURL', '$rootScope',
+            function($scope, loginService, $location, $firebase, FBURL, $rootScope) {
               $scope.email = null;
               $scope.pass = null;
               $scope.confirm = null;
               $scope.createMode = false;
 
-              $scope.$on('$firebaseAuth:login', function() {
+              $scope.$on('$firebaseAuth:login', function(err, user) {
+                $rootScope.user = $firebase(new Firebase(FBURL + '/users/' + user.id));
                 $location.replace();
                 $location.path('/account');
               });
@@ -41,7 +42,7 @@ angular.module('gendertrack.auth')
                       $scope.err = err ? err + '' : null;
                     } else {
                       $scope.login(function() {
-                        loginService.createProfile(user.uid, user.email);
+                        loginService.createProfile(user.id, user.email);
                       });
                     }
                   });
